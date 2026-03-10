@@ -1,12 +1,3 @@
-"""
-FinGuard AI – Streamlit Web App
-================================
-Run with:  streamlit run finguard_app.py
-
-Requirements:
-    pip install streamlit scikit-learn pandas numpy joblib matplotlib seaborn
-
-Make sure you have run finguard_model.py first so the  folder exists
 with: finguard_model.pkl, scaler.pkl, feature_names.pkl
 """
 
@@ -17,7 +8,6 @@ import joblib, os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# ── Page Config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="FinGuard AI",
     page_icon="🛡️",
@@ -25,7 +15,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
     .main { background-color: #0f172a; }
@@ -41,7 +30,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── Load Model ────────────────────────────────────────────────────────────────
 MODEL_DIR = "."
 
 @st.cache_resource
@@ -58,7 +46,6 @@ except Exception as e:
     model_loaded = False
     model_error  = str(e)
 
-# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/shield.png", width=60)
     st.title("FinGuard AI")
@@ -80,7 +67,6 @@ with st.sidebar:
     else:
         st.error("❌ Model not found – run finguard_model.py first")
 
-# ══════════════ PAGE: Home ════════════════════════════════════════════════════
 if page == "🏠 Home":
     st.title("🛡️ FinGuard AI")
     st.subheader("Credit Risk Classification & Fraud Detection System")
@@ -110,7 +96,6 @@ if page == "🏠 Home":
     col4.metric("F1-Score",  "98.3%",    help="Harmonic mean P/R")
 
 
-# ══════════════ PAGE: Predictor ═══════════════════════════════════════════════
 elif page == "🔍 Credit Risk Predictor":
     st.title("🔍 Credit Risk Predictor")
     st.markdown("Fill in the applicant's details below and click **Predict**.")
@@ -221,7 +206,6 @@ elif page == "🔍 Credit Risk Predictor":
         st.pyplot(fig)
 
 
-# ══════════════ PAGE: Model Performance ══════════════════════════════════════
 elif page == "📊 Model Performance":
     st.title("📊 Model Performance")
 
@@ -247,7 +231,6 @@ elif page == "📊 Model Performance":
         st.dataframe(df.style.highlight_max(color="#22c55e20", axis=0), use_container_width=True)
 
 
-# ══════════════ PAGE: About ═══════════════════════════════════════════════════
 elif page == "ℹ️ About":
     st.title("ℹ️ About FinGuard AI")
     st.markdown("""

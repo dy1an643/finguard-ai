@@ -42,7 +42,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Load Model ────────────────────────────────────────────────────────────────
-MODEL_DIR = "outputs"
+MODEL_DIR = "."
 
 @st.cache_resource
 def load_artifacts():

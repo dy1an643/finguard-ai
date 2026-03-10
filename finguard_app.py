@@ -6,7 +6,7 @@ Run with:  streamlit run finguard_app.py
 Requirements:
     pip install streamlit scikit-learn pandas numpy joblib matplotlib seaborn
 
-Make sure you have run finguard_model.py first so the outputs/ folder exists
+Make sure you have run finguard_model.py first so the  folder exists
 with: finguard_model.pkl, scaler.pkl, feature_names.pkl
 """
 
@@ -228,9 +228,9 @@ elif page == "📊 Model Performance":
 
     # Show saved plots if they exist
     plots = {
-        "EDA Plots":          "outputs/eda_plots.png",
-        "Evaluation Plots":   "outputs/evaluation_plots.png",
-        "Feature Importance": "outputs/feature_importance.png",
+        "EDA Plots":          "eda_plots.png",
+        "Evaluation Plots":   "evaluation_plots.png",
+        "Feature Importance": "feature_importance.png",
     }
 
     for title, path in plots.items():
@@ -241,7 +241,7 @@ elif page == "📊 Model Performance":
             st.warning(f"'{path}' not found. Run finguard_model.py first.")
 
     # Show comparison table
-    csv_path = "outputs/model_comparison.csv"
+    csv_path = "model_comparison.csv"
     if os.path.exists(csv_path):
         st.subheader("Model Comparison Table")
         df = pd.read_csv(csv_path, index_col=0)

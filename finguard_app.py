@@ -1,5 +1,3 @@
-with: finguard_model.pkl, scaler.pkl, feature_names.pkl
-"""
 
 import streamlit as st
 import pandas as pd
